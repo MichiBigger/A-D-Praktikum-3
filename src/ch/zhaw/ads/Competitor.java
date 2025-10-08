@@ -49,22 +49,30 @@ public class Competitor implements Comparable<Competitor> {
     @Override
     public int compareTo(Competitor o) {
         // TODO Implement
-        return  0;
+        long t1 = parseTime(this.time);
+        long t2 = parseTime(o.time);
+        return Long.compare(t1, t2);
     }
 
     @Override
     public boolean equals (Object o) {
         // TODO Implement
-        return false;
+        if (this == o) return true;
+        if (!(o instanceof Competitor)) return false;
+        Competitor other = (Competitor) o;
+        return this.name.equals(other.name) && this.time.equals(other.time);
     }
 
     @Override
     public int hashCode() {
         // TODO Implement
-        return 0;
+        int result = name.hashCode();
+        result = 31 * result + time.hashCode();
+        return result;
     }
-
 }
+
+
 
 class AlphaComparatorCompetitor implements Comparator<Competitor> {
 
